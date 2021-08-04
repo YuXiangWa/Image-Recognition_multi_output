@@ -49,7 +49,7 @@ class FashionNet:
 		x = Dropout(0.5)(x)
 		x = Dense(numCategories)(x)
 		x = Activation(finalAct, name="category_output")(x)
-
+		# 激活層命名為 category_output。之後將在 train.py 中通過名字引用
 		return x
 
 	@staticmethod
@@ -81,7 +81,7 @@ class FashionNet:
 		x = Dropout(0.5)(x)
 		x = Dense(numColors)(x)
 		x = Activation(finalAct, name="color_output")(x)
-
+		# 命名為color_output。將在train.py中引用
 		return x
 
 	@staticmethod
