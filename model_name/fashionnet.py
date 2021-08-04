@@ -14,7 +14,10 @@ class FashionNet:
 	@staticmethod
 	def build_category_branch(inputs, numCategories,
 		finalAct="softmax", chanDim=-1):
-		# 也可以选择成灰度图对于样式来说
+		# inputs：輸入類別分支子網絡的輸入量
+		# numCategories：裙子、鞋子、牛仔褲、襯衫等類別的數量
+		# finalAct：默認 softmax 分類器。要執行多輸出分類，也要執行多標籤分類，則換成 sigmoid
+
 		x = Conv2D(32, (3, 3), padding="same",input_shape=(96,96,3))(inputs)
 		x = Activation("relu")(x)
 		x = BatchNormalization(axis=chanDim)(x)
@@ -38,7 +41,7 @@ class FashionNet:
 		x = BatchNormalization(axis=chanDim)(x)
 		x = MaxPooling2D(pool_size=(2, 2))(x)
 
-		# 全连接层
+		# 全連接層
 		x = Flatten()(x)
 		x = Dense(256)(x)
 		x = Activation("relu")(x)
@@ -70,7 +73,7 @@ class FashionNet:
 		x = BatchNormalization(axis=chanDim)(x)
 		x = MaxPooling2D(pool_size=(2, 2))(x)
 
-		# 全连接层
+		# 全連接層
 		x = Flatten()(x)
 		x = Dense(128)(x)
 		x = Activation("relu")(x)
@@ -88,14 +91,14 @@ class FashionNet:
 		inputShape = (height, width, 3)
 		chanDim = -1
 
-		# 分别构建两个模块
+		# 分別構建兩個模塊
 		inputs = Input(shape=inputShape)
 		categoryBranch = FashionNet.build_category_branch(inputs,
 			numCategories, finalAct=finalAct, chanDim=chanDim)
 		colorBranch = FashionNet.build_color_branch(inputs,
 			numColors, finalAct=finalAct, chanDim=chanDim)
 
-		# 相同的输入数据，两个输出结果，相当于两个分支
+		# 相同的輸入數據，兩個輸出結果，相當於兩個分支
 		model = Model(
 			inputs=inputs,
 			outputs=[categoryBranch, colorBranch],
