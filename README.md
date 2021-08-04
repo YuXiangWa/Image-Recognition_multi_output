@@ -8,16 +8,16 @@
 
 * Model架構
  
-![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/model.png)
+![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/model_.png)
 
 
 * 訓練並得到Loss以及Accuracy
 
-![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/output_acc.png)
-![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/output_losses.png)
+![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/output_Acc.png)
+![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/output_loss.png)
 
 
 * 預測
 
-![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/Prediction.png)
+![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/Predictions.png)
 
