@@ -14,7 +14,7 @@ class FashionNet:
 	@staticmethod
 	def build_category_branch(inputs, numCategories,
 		finalAct="softmax", chanDim=-1):
-		# inputs：輸入類別分支子網絡的輸入量
+		# inputs：輸入類別分支子網路的輸入量
 		# numCategories：裙子、鞋子、牛仔褲、襯衫等類別的數量
 		# finalAct：默認 softmax 分類器。要執行多輸出分類，也要執行多標籤分類，則換成 sigmoid
 
