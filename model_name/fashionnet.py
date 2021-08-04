@@ -17,12 +17,13 @@ class FashionNet:
 		# inputs：輸入類別分支子網路的輸入量
 		# numCategories：裙子、鞋子、牛仔褲、襯衫等類別的數量
 		# finalAct：默認 softmax 分類器。要執行多輸出分類，也要執行多標籤分類，則換成 sigmoid
-
-		x = Conv2D(32, (3, 3), padding="same",input_shape=(96,96,3))(inputs)
+		x = Lambda(lambda c: tf.image.rgb_to_grayscale(c))(inputs)
+		x = Conv2D(32, (3, 3), padding="same")(x)
 		x = Activation("relu")(x)
 		x = BatchNormalization(axis=chanDim)(x)
 		x = MaxPooling2D(pool_size=(3, 3))(x)
-
+		x = Dropout(0.25)(x)
+		
 		# (CONV => RELU) * 2 => POOL
 		x = Conv2D(64, (3, 3), padding="same")(x)
 		x = Activation("relu")(x)
@@ -31,7 +32,8 @@ class FashionNet:
 		x = Activation("relu")(x)
 		x = BatchNormalization(axis=chanDim)(x)
 		x = MaxPooling2D(pool_size=(2, 2))(x)
-
+		x = Dropout(0.25)(x)
+		
 		# (CONV => RELU) * 2 => POOL
 		x = Conv2D(128, (3, 3), padding="same")(x)
 		x = Activation("relu")(x)
@@ -40,7 +42,8 @@ class FashionNet:
 		x = Activation("relu")(x)
 		x = BatchNormalization(axis=chanDim)(x)
 		x = MaxPooling2D(pool_size=(2, 2))(x)
-
+		x = Dropout(0.25)(x)
+		
 		# 全連接層
 		x = Flatten()(x)
 		x = Dense(256)(x)
@@ -60,19 +63,22 @@ class FashionNet:
 		x = Activation("relu")(x)
 		x = BatchNormalization(axis=chanDim)(x)
 		x = MaxPooling2D(pool_size=(3, 3))(x)
-
+		x = Dropout(0.25)(x)
+		
 		# CONV => RELU => POOL
 		x = Conv2D(32, (3, 3), padding="same")(x)
 		x = Activation("relu")(x)
 		x = BatchNormalization(axis=chanDim)(x)
 		x = MaxPooling2D(pool_size=(2, 2))(x)
-
+		x = Dropout(0.25)(x)
+		
 		# CONV => RELU => POOL
 		x = Conv2D(32, (3, 3), padding="same")(x)
 		x = Activation("relu")(x)
 		x = BatchNormalization(axis=chanDim)(x)
 		x = MaxPooling2D(pool_size=(2, 2))(x)
-
+		x = Dropout(0.25)(x)
+		
 		# 全連接層
 		x = Flatten()(x)
 		x = Dense(128)(x)
