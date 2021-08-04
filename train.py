@@ -87,9 +87,10 @@ H = model.fit(trainX,
 		{"category_output": testCategoryY, "color_output": testColorY}),
 	epochs=EPOCHS,
 	verbose=1)
-
+# 保存模型
 model.save("outputs\model.model")
 
+# 保存標籤
 f = open("outputs\category_lb.pickle", "wb")
 f.write(pickle.dumps(categoryLB))
 f.close()
