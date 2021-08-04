@@ -39,6 +39,7 @@ colorLabels = []
 for imagePath in imagePaths:
 	image = cv2.imread(imagePath)
 	image = cv2.resize(image, (IMAGE_DIMS[1], IMAGE_DIMS[0]))
+	# BGR 轉換成 RGB。在build_category_branch 函數中的 FashionNet 類，在 lambda 函數中使用了 TensorFlow 的 rgb_to_grayscale 轉換
 	image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 	image = img_to_array(image)
 	data.append(image)
