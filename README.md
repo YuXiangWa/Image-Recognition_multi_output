@@ -13,7 +13,7 @@
 
 * 訓練並得到Loss以及Accuracy
 
-![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/output_accs.png)
+![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/output_acc.png)
 ![image](https://github.com/YuXiangWa/Image-Recognition_multi_output/blob/main/output_losses.png)
 
 
